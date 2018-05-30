@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_newest"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/img_news_placeholder1"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_talker_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anushka Naiknaware"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/iv_newest"
+        android:layout_alignLeft="@+id/iv_newest"
+        android:layout_alignTop="@+id/iv_newest"
+        android:layout_alignBottom="@+id/iv_newest"
+        android:layout_margin="16dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"/>
+
+   <TextView
+        android:id="@+id/tv_talk_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A teen scientist's invention to help wounds heal"
+        android:layout_below="@+id/iv_newest"
+        android:layout_alignLeft="@+id/iv_newest"
+        android:layout_alignTop="@+id/tv_talker_name"
+        android:layout_alignBottom="@+id/tv_talker_name"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="16dp"
+       android:layout_marginRight="80dp"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+</RelativeLayout>
