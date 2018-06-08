@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.padcmyanmar.ted.activities.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/privacy_policy"
+        android:orderInCategory="100"
+        android:title="@string/privacy_policy"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/feed_back"
+        android:orderInCategory="100"
+        android:title="@string/feed_back"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/Login"
+        android:orderInCategory="100"
+        android:title="@string/login"
+        app:showAsAction="never" />
+</menu>
