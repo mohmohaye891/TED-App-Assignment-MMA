@@ -14,8 +14,8 @@ public class NewestAdapter extends RecyclerView.Adapter {
 
     private NewestDelegate mNewestDelegate;
 
-    public NewestAdapter(NewestDelegate newestDelegate) {
-        mNewestDelegate = newestDelegate;
+    public NewestAdapter(NewestDelegate NewestDelegate) {
+        this.mNewestDelegate = NewestDelegate;
     }
 
     @NonNull
@@ -23,7 +23,7 @@ public class NewestAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.view_holder_talk, parent, false);
-        return new NewestViewHolder(view, mNewestDelegate);
+        return new NewestViewHolder(view,mNewestDelegate);
     }
 
     @Override

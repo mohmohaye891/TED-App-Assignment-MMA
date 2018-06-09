@@ -7,16 +7,18 @@ import com.padcmyanmar.ted.delegates.NewestDelegate;
 
 public class NewestViewHolder extends RecyclerView.ViewHolder {
 
-    private NewestDelegate mNewestDelegate;
+   private NewestDelegate mnewestDelegate;
 
     public NewestViewHolder(View itemView, NewestDelegate newestDelegate) {
+
         super(itemView);
-        mNewestDelegate = newestDelegate;
+
+        mnewestDelegate = newestDelegate;
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mNewestDelegate.onTapNews();
+                mnewestDelegate.onTapImage();
             }
         });
     }
