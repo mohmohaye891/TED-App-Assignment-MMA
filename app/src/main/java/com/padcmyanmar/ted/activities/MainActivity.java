@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.padcmyanmar.ted.R;
 import com.padcmyanmar.ted.adapters.NewestAdapter;
+import com.padcmyanmar.ted.data.models.NewestModel;
 import com.padcmyanmar.ted.delegates.NewestDelegate;
 
 public class MainActivity extends BaseActivity implements NewestDelegate{
@@ -31,6 +32,8 @@ public class MainActivity extends BaseActivity implements NewestDelegate{
         rvNewest.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,
                 false));
+
+        NewestModel.getObjectInstance().LoadNewestList();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
