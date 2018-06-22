@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +15,17 @@ import android.view.MenuItem;
 import com.padcmyanmar.ted.R;
 import com.padcmyanmar.ted.adapters.NewestAdapter;
 import com.padcmyanmar.ted.data.models.NewestModel;
+import com.padcmyanmar.ted.data.vos.TalkVO;
 import com.padcmyanmar.ted.delegates.NewestDelegate;
+import com.padcmyanmar.ted.events.SuccessGetNewestEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends BaseActivity implements NewestDelegate{
+
+    private NewestAdapter mNewestAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +36,8 @@ public class MainActivity extends BaseActivity implements NewestDelegate{
         setSupportActionBar(toolbar);
 
         RecyclerView rvNewest = findViewById(R.id.rv_newest);
-        NewestAdapter newestAdapter = new NewestAdapter(this);
-        rvNewest.setAdapter(newestAdapter);
+        mNewestAdapter = new NewestAdapter(this);
+        rvNewest.setAdapter(mNewestAdapter);
         rvNewest.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,
                 false));
@@ -43,6 +52,18 @@ public class MainActivity extends BaseActivity implements NewestDelegate{
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -68,8 +89,15 @@ public class MainActivity extends BaseActivity implements NewestDelegate{
     }
 
     @Override
-    public void onTapImage() {
+    public void onTapImage(TalkVO talks) {
         Intent intent = new Intent(getApplicationContext(), NewestDetailActivity.class);
+        intent.putExtra("newestId", talks.getTalkId());
         startActivity(intent);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSuccessGetNewest(SuccessGetNewestEvent event){
+        Log.d("onSuccessGetNewest", "onSuccessGetNewest : " + event.getNewestList());
+        mNewestAdapter.setNewestList(event.getNewestList());
     }
 }
