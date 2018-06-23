@@ -22,7 +22,7 @@ public class NewestAdapter extends RecyclerView.Adapter<NewestViewHolder> {
 
     public NewestAdapter(NewestDelegate NewestDelegate) {
         this.mNewestDelegate = NewestDelegate;
-        mTalkList = new ArrayList<>();
+         mTalkList = new ArrayList<>();
     }
 
     @NonNull

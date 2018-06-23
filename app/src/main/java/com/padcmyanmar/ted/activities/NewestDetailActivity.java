@@ -7,7 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padcmyanmar.ted.R;
 import com.padcmyanmar.ted.data.models.NewestModel;
 import com.padcmyanmar.ted.data.vos.TalkVO;
@@ -17,14 +19,20 @@ import butterknife.ButterKnife;
 
 public class NewestDetailActivity extends BaseActivity {
 
-   /* @BindView(R.id.iv_newest_backdrop)
-    ImageView ivNewestBackdrop;*/
+    @BindView(R.id.iv_newest_backdrop)
+    ImageView ivNewestBackdrop;
+
+    @BindView(R.id.tv_title_name)
+    TextView tvTitleName;
+
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ButterKnife.bind(this, this);
         setContentView(R.layout.activity_newest_details);
+        ButterKnife.bind(this, this);
 
         String newestId = getIntent().getStringExtra("newestId");
 
@@ -35,6 +43,12 @@ public class NewestDetailActivity extends BaseActivity {
     }
 
     private void bindData(TalkVO talks) {
-        //ivNewestBackdrop.setText()
+        tvTitleName.setText(talks.getTitle());
+        //tvTitle.setText(talks.getTitle());
+
+
+        Glide.with(ivNewestBackdrop.getContext())
+                .load(talks.getImageUrl())
+                .into(ivNewestBackdrop);
     }
 }
