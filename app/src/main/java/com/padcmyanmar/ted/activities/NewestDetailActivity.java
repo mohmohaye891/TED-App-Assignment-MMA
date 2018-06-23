@@ -28,6 +28,15 @@ public class NewestDetailActivity extends BaseActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
+    @BindView(R.id.tv_time)
+    TextView tvTime;
+
+    @BindView(R.id.tv_paragraph)
+    TextView tvParagraph;
+
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +52,10 @@ public class NewestDetailActivity extends BaseActivity {
     }
 
     private void bindData(TalkVO talks) {
-        tvTitleName.setText(talks.getTitle());
-        //tvTitle.setText(talks.getTitle());
-
+        tvTitleName.setText(talks.getSpeaker().getName());
+        tvTitle.setText(talks.getTitle());
+        tvTime.setText(talks.getDurationInSec());
+        tvParagraph.setText(talks.getDescription());
 
         Glide.with(ivNewestBackdrop.getContext())
                 .load(talks.getImageUrl())
