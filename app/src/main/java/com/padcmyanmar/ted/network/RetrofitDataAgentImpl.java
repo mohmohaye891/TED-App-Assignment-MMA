@@ -58,6 +58,9 @@ public class RetrofitDataAgentImpl implements NewestDataAgent {
                     EventBus.getDefault().post(event);
                 }else {
                     if (newestResponse == null){
+                        ApiErrorEvent event = new ApiErrorEvent("Empty response in network call");
+                        EventBus.getDefault().post(event);
+                    }else {
                         ApiErrorEvent event = new ApiErrorEvent(newestResponse.getMessage());
                         EventBus.getDefault().post(event);
                     }

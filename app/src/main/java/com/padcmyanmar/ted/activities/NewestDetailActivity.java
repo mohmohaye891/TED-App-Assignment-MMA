@@ -34,6 +34,11 @@ public class NewestDetailActivity extends BaseActivity {
     @BindView(R.id.tv_paragraph)
     TextView tvParagraph;
 
+    @BindView(R.id.iv_speaker)
+    ImageView ivSpeaker;
+
+    @BindView(R.id.tv_speaker_name)
+    TextView tvSpeakerName;
 
 
 
@@ -56,9 +61,14 @@ public class NewestDetailActivity extends BaseActivity {
         tvTitle.setText(talks.getTitle());
         tvTime.setText(talks.getDurationInSec());
         tvParagraph.setText(talks.getDescription());
+        tvSpeakerName.setText(talks.getSpeaker().getName());
 
         Glide.with(ivNewestBackdrop.getContext())
                 .load(talks.getImageUrl())
                 .into(ivNewestBackdrop);
+
+        Glide.with(ivSpeaker.getContext())
+                .load(talks.getImageUrl())
+                .into(ivSpeaker);
     }
 }

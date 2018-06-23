@@ -31,7 +31,6 @@ public class NewestViewHolder extends RecyclerView.ViewHolder {
     TextView tvTime;
 
     public NewestViewHolder(View itemView, NewestDelegate newestDelegate) {
-
         super(itemView);
         ButterKnife.bind(this, itemView);
 
@@ -54,5 +53,7 @@ public class NewestViewHolder extends RecyclerView.ViewHolder {
         Glide.with(ivNewest.getContext())
                 .load(talk.getImageUrl())
                 .into(ivNewest);
+
+
     }
 }
